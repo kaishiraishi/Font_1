@@ -5,11 +5,13 @@
 char Text[] ="Waveshare ESP32-S3-Matrix Text Testing!";
 void setup()
 {
-  Matrix_Init();
+  // USB CDC有効化（ESP32-S3用）
   Serial.begin(115200);
+  while(!Serial) { delay(10); } // USB接続を待機
   delay(1000);
   Serial.println("Starting ESP32-S3 Matrix BLE...");
   Serial.println("HELLOWORLD");
+  Matrix_Init();
   
 }
 void loop() {
